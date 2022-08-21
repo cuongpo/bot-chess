@@ -7,12 +7,21 @@ from datetime import datetime
 import pyautogui
 import threading
 from threading import Thread
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
 
 
 def main(number_of_tab,link,max_time,position):
 
 	# Open browser + change position
-	driver = webdriver.Chrome(executable_path="./chromedriver")
+	profile_path = r'./chromedriver'
+	options=Options()
+	driver = Chrome(options=options)
+	driver = Chrome(service=service, options=options)
+
+	# driver = webdriver.Chrome(executable_path="./chromedriver")
 	driver.set_window_position(position, position, windowHandle ='current')
 	driver.get(link)
 	
@@ -43,7 +52,7 @@ def main(number_of_tab,link,max_time,position):
 			x = driver.find_element(By.CLASS_NAME,'ytp-ad-button-text')
 			print(x)
 			x.click()
-			
+
 			# Check cookie
 			print(driver.get_cookies())
 
@@ -66,7 +75,10 @@ def main(number_of_tab,link,max_time,position):
 
 			# Mo tab moi
 			time.sleep(3)
-			driver = webdriver.Chrome(executable_path="./chromedriver")
+			profile_path = r'./chromedriver'
+			options=Options()
+			driver = Chrome(options=options)
+			driver = Chrome(service=service, options=options)
 			driver.set_window_position(position, position, windowHandle ='current')
 			driver.get(link)
 			start_time = int(time.time() * 1000)
@@ -89,7 +101,9 @@ def main(number_of_tab,link,max_time,position):
 
 				# Mo tab moi
 				time.sleep(3)
-				driver = webdriver.Chrome(executable_path="./chromedriver")
+				profile_path = r'./chromedriver'
+				options=Options()
+				driver = Chrome(options=options)
 				driver.set_window_position(position, position, windowHandle ='current')
 				driver.get(link)
 				start_time = int(time.time() * 1000)
