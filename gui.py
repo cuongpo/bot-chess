@@ -225,6 +225,27 @@ def black():
     pyautogui.click(x_after,y_after)
 
 
+def main_white():
+    while(True):
+        try:
+            time.sleep(1)
+            pyautogui.move('./my_turn.png')
+            white()
+            time.sleep(4)
+        except:
+            k = 1
+
+def main_black():
+    while(True):
+        try:
+            time.sleep(1)
+            pyautogui.move('./my_turn.png')
+            black()
+            time.sleep(5)
+        except:
+            k = 1
+
+
 import PySimpleGUI as sg
 
 layout = [[sg.Button("Black")],[sg.Button("White")]]
@@ -238,9 +259,9 @@ while True:
     # End program if user closes window or
     # presses the OK button
     if event == "Black":
-        black()
+        main_black()
     if event == "White":
-        white()
+        main_white()
     if event == sg.WIN_CLOSED:
         break
 window.close()
