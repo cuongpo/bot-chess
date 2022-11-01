@@ -13,16 +13,14 @@ from selenium.webdriver.chrome.options import Options
 
 
 
-def main(number_of_tab,link,max_time,position):
+def main(number_of_tab,link,max_time):
 
 	# Open browser + change position
 	profile_path = r'./chromedriver'
-	options=Options()
-	driver = Chrome(options=options)
-	driver = Chrome(service=service, options=options)
 
-	# driver = webdriver.Chrome(executable_path="./chromedriver")
-	driver.set_window_position(position, position, windowHandle ='current')
+
+	driver = webdriver.Chrome(executable_path="./chromedriver.exe")
+	# driver.set_window_position(position, position, windowHandle ='current')
 	driver.get(link)
 	
 
@@ -130,17 +128,7 @@ number_of_tab = input("so luong tab muon bat: ")
 link = input("link youtube: ")
 max_time = input("xem toi da bao nhieu giay: ")
 
-# multi thread
-thislist = ["1", "2", "3","4","5","6","7","8","9","10","1", "2", "3","4","5","6","7","8","9","10","1", "2", "3","4","5","6","7","8","9","10","1", "2", "3","4","5","6","7","8","9","10","1", "2", "3","4","5","6","7","8","9","10"]
-
-for x in range(int(number_of_tab)):
-	thislist[x] = threading.Thread(target=main, args=(number_of_tab,link,max_time,(x+1)*20))
-	thislist[x].start()
-	time.sleep(1)
-time.sleep(3)
-for x in range(int(number_of_tab)):
-	thislist[x].join()
-	time.sleep(1)
+main(number_of_tab,link,max_time);
 	
 
 
