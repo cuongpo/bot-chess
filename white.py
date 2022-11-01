@@ -29,12 +29,10 @@ root.withdraw()  # keep the window from showing
 
 # Open extension - get FEN
 #time.sleep(3)
-#pyautogui.click('./logo_extension.png')
-time.sleep(3)
+#pyautogui.click('./logo_extension.png')    
 pyautogui.click('./scan_button.png')
 time.sleep(3)
 pyautogui.click('./copy.png')
-time.sleep(5)
 fen = root.clipboard_get()
 print(fen)
 
@@ -54,9 +52,9 @@ print(move3)
 print(move4)
 
 ## Board cordinates
-x_root = 302
-y_root = 994 
-distance = 994 - 880
+x_root = 275
+y_root = 1055  
+distance = 1055 - 928
 
 if (move1 == "a"):
 	x_before = x_root
